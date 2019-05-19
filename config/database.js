@@ -1,11 +1,10 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const connectionString = 'mongodb://localhost/flights'
 
-mongoose.connect('mongoose://localhost/flight',
-    {useNewParser:true}
+mongoose.connect(connectionString,
+    {useNewUrlParser:true}
 );
 
-var dataDB = mongoose.connection;
-
-dataDB.on('connection', function(){
-    console.log(`Connection to MongoDB at ${db.host}:${db.port}`)
-});
+mongoose.connection.on('connected', () => {
+    console.log('Connection to DB established')
+})

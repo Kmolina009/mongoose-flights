@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flight Detail</title>
+</head>
+<body>
+    <h1>Flight Detail</h1>
+    
+    <a href="/flights/new">
+        <p>Back to all Flights</p>
+    </a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Airline</th>
+                <th>Flight No</th>
+                <th>Airport</th>
+                <th>Departs</th>
+                <th>Flight Details</th>
+                <th>Ticket</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td><%= flight.airline%></td>
+            <td><%= flight.flightNo%></td>
+            <td><%= moment5(flight.departs).format('dddd, MMMM Do YYYY')%></td>‹
+            <td><%= flight.airport%></td>     
+            <input name="seat" required pattern="[A-F][1-9]\d?">
+        </tbody>
+    </table>
+
+</body>
+</html>

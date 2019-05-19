@@ -4,12 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var database = require('./mongoose-flight/config/database')
-var indexRouter = require('./mongoose-flights/routes/index');
-var usersRouter = require('./mongoose-flights/routes/users');
+
+var indexRouter = require('./routes/index');
+var flightsRouter = require('./routes/flights');
 
 var app = express();
-
+require('./config/database');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -19,9 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/database',database);
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/flights', flightsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
