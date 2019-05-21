@@ -1,20 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ticketSchema = new Schema({
-    seat:{
-        type:String,
-        match: /[A-F][1-9]\d?/
-    },
-    price:{
-        type:Number,
-        min:0
-    },
-    flight:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref: 'Flight'
-    }
-});
+
+
 const destinationSchema = new Schema({
     airport:{
         type:String,
@@ -41,19 +29,15 @@ const flightSchema = new Schema({
     },
     departs:{
         type: Date,
-        default: function () {
-            return new Date().getFullYear() + 1;
-        }, 
-        arrival:{
-            type:Date
+        default: function(){
+            let date = new Date().setFullYear(new Date().getFullYear() + 1);
+            return date;
         }
     },
-    ticket:[{
+    tickets:[{
         type:Schema.Types.ObjectId, ref:'tickets'
     }]
 
-    
 });
 
-module.exports= mongoose.model('Ticket', ticketSchema)
 module.exports = mongoose.model('Flight', flightSchema)

@@ -1,4 +1,5 @@
 var Flight = require('../model/flight');
+var Ticket = require('../model/ticket');
 var moment = require('moment');
 module.exports = {
             index,
@@ -30,7 +31,8 @@ function show (req, res){
     //we need to query the db for a flights id
         Flight.findById(req.params.id, function(err, flight){
             Ticket.find({flight:flight._id}, function(err, ticket){
-            res.render('flights/show',{ flight })
-                })
+                Ticket.findById(req.param.id).populate('flight')
+                }.exec.res.render('flights/show',{ flight })
+                )
         });
 }

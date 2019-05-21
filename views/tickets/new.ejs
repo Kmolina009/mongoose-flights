@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add New Ticket</title>
+</head>
+<body>
+    <h1>Add a New Ticket for FlightNo.<%= flight.flightNo%></h1>
+    <form action="/flights/<%= flight._id/tickets%>"
+        method="POST" autocomplete="off">
+        <input type="text" name="seat" required="/[A-F][1-9]\d?/" >
+        <input type="number" name="price" min="0">
+    </form>
+</body>
+</html>
